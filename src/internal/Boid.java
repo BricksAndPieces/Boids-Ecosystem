@@ -57,9 +57,10 @@ public class Boid {
     public Boid(double x, double y, int size, Environment e) {
         this.position = new Vector(x, y);
         this.size = size;
-        this.hue = size / 5f; // todo
         this.life = startingLife;
         this.environment = e;
+
+        this.hue = flockingMode ? (float)Math.random() : size / 5f;
     }
 
     public void run(Graphics2D g, int w, int h) {
@@ -304,7 +305,7 @@ public class Boid {
         AffineTransform save = g.getTransform();
         g.translate(position.x, position.y);
         g.rotate(velocity.heading() + Math.PI / 2);
-        g.setColor(Color.getHSBColor(hue, 0.6f, 0.7f));
+        g.setColor(Color.getHSBColor(flockingMode ? avgHue() : hue, 0.6f, 0.7f));
         g.fill(getShape(size));
 
         g.setTransform(save);
@@ -322,6 +323,20 @@ public class Boid {
 
         shapes.put(x, shape);
         return shape;
+    }
+
+    private float avgHue() {
+        int visible = 0;
+        float hueSum = 0;
+
+        for(Boid b : flock) {
+            if(b.visible) {
+                visible++;
+                hueSum += b.hue;
+            }
+        }
+
+        return hueSum / visible;
     }
 
     public void setPrey(List<Boid> prey) {
