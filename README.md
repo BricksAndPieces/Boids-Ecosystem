@@ -1,6 +1,13 @@
 # Boids-Ecosystem
 This project is a combination of the Boids flocking algorithm with an ecosystem simulation. Boids eat each other based on size.
 
+## Instructions
+After cloning the repository and running the project, the controls are as follows:
+- Space  -> Changes between flocking and ecosystem modes
+- Q -> Displays the underlying quadtrees (which looks cool)
+- Clicking -> Spawns boids
+- 1-5 -> Sets the size of the boid to be spawned during ecosystem mode
+
 ## Boids
 The Boids algorithm mimics the flocking nature of animals such as birds or fish. Entities, called boids, are used to demonstrate this. The algorithm work using three main principles.
 More information can be found at https://en.wikipedia.org/wiki/Boids
