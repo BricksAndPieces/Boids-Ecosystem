@@ -13,19 +13,19 @@ public class Options extends JPanel {
     private static final double separationWeight = Boid.separationWeight;
     private static final double alignmentWeight = Boid.alignmentWeight;
     private static final double cohesionWeight = Boid.cohesionWeight;
-    private static final double noiseWeight = Boid.noiseWeight;
+    //private static final double noiseWeight = Boid.noiseWeight;
 
     // Labels
     private final JLabel sLabel = new JLabel("Separation");
     private final JLabel aLabel = new JLabel("Alignment");
     private final JLabel cLabel = new JLabel("Cohesion");
-    private final JLabel nLabel = new JLabel("Noise");
+    //private final JLabel nLabel = new JLabel("Noise");
 
     // Sliders
     private final JSlider sSlider = new JSlider(0, 50, (int) (separationWeight * 10));
     private final JSlider aSlider = new JSlider(0, 50, (int) (alignmentWeight * 10));
     private final JSlider cSlider = new JSlider(0, 50, (int) (cohesionWeight * 10));
-    private final JSlider nSlider = new JSlider(0, 50, (int) (noiseWeight * 10));
+    //private final JSlider nSlider = new JSlider(0, 50, (int) (noiseWeight * 10));
 
     // Current mode
     private boolean flocking = true;
@@ -40,18 +40,18 @@ public class Options extends JPanel {
         aLabel.setFont(font);
         cLabel.setForeground(Color.white);
         cLabel.setFont(font);
-        nLabel.setForeground(Color.white);
-        nLabel.setFont(font);
+        //nLabel.setForeground(Color.white);
+        //nLabel.setFont(font);
 
         sSlider.setUI(new CustomSliderUI(sSlider));
         aSlider.setUI(new CustomSliderUI(aSlider));
         cSlider.setUI(new CustomSliderUI(cSlider));
-        nSlider.setUI(new CustomSliderUI(nSlider));
+        //nSlider.setUI(new CustomSliderUI(nSlider));
 
         sSlider.addChangeListener(e -> Boid.separationWeight = sSlider.getValue()/10.0);
         aSlider.addChangeListener(e -> Boid.alignmentWeight = aSlider.getValue()/10.0);
         cSlider.addChangeListener(e -> Boid.cohesionWeight = cSlider.getValue()/10.0);
-        nSlider.addChangeListener(e -> Boid.noiseWeight = nSlider.getValue()/10.0);
+        //nSlider.addChangeListener(e -> Boid.noiseWeight = nSlider.getValue()/10.0);
 
         add(sLabel);
         add(sSlider);
@@ -59,8 +59,8 @@ public class Options extends JPanel {
         add(aSlider);
         add(cLabel);
         add(cSlider);
-        add(nLabel);
-        add(nSlider);
+        //add(nLabel);
+        //add(nSlider);
 
         flocking();
     }
@@ -79,20 +79,20 @@ public class Options extends JPanel {
         aSlider.setVisible(true);
         cLabel.setVisible(true);
         cSlider.setVisible(true);
-        nLabel.setVisible(true);
-        nSlider.setVisible(true);
+        //nLabel.setVisible(true);
+        //nSlider.setVisible(true);
     }
 
     private void ecosystem() {
         Boid.separationWeight = separationWeight;
         Boid.alignmentWeight = alignmentWeight;
         Boid.cohesionWeight = cohesionWeight;
-        Boid.noiseWeight = noiseWeight;
+        //Boid.noiseWeight = noiseWeight;
 
         sSlider.setValue((int)(separationWeight*10));
         aSlider.setValue((int)(alignmentWeight*10));
         cSlider.setValue((int)(cohesionWeight*10));
-        nSlider.setValue((int)(noiseWeight*10));
+        //nSlider.setValue((int)(noiseWeight*10));
 
         sLabel.setVisible(false);
         sSlider.setVisible(false);
@@ -100,8 +100,8 @@ public class Options extends JPanel {
         aSlider.setVisible(false);
         cLabel.setVisible(false);
         cSlider.setVisible(false);
-        nLabel.setVisible(false);
-        nSlider.setVisible(false);
+        //nLabel.setVisible(false);
+        //nSlider.setVisible(false);
     }
 
     public boolean inFlockingMode() {
