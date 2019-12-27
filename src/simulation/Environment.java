@@ -31,7 +31,7 @@ public class Environment extends JPanel {
     private final List<List<Boid>> boids = new ArrayList<>();
     private final List<Boid> boidQueue = new ArrayList<>();
 
-    private List<QuadTree> x = new ArrayList<>();
+    private List<QuadTree> quadTrees = new ArrayList<>();
     private boolean showQuads = false;
     private boolean showInfo = true;
 
@@ -111,7 +111,7 @@ public class Environment extends JPanel {
 
         if(showQuads) {
             g.setColor(new Color(255, 255, 255, 50));
-            x.forEach(z -> z.draw(g));
+            quadTrees.forEach(z -> z.draw(g));
         }
 
         if(showInfo) {
@@ -158,7 +158,7 @@ public class Environment extends JPanel {
             b.setFlock(quadTrees.get(boids.size()-1).query(p1, p2));
         }
 
-        x = quadTrees;
+        this.quadTrees = quadTrees;
     }
 
     private void updateLists() {
