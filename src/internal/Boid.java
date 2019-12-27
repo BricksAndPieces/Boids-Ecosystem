@@ -336,7 +336,7 @@ public class Boid {
             }
         }
 
-        return hueSum / visible;
+        return visible == 0 ? hue : hueSum / visible;
     }
 
     public void setPrey(List<Boid> prey) {
