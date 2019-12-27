@@ -169,7 +169,7 @@ public class Environment extends JPanel {
         boidQueue.forEach(boid -> boids.get(boid.getSize()-smallestBoid+1).add(boid));
         boidQueue.clear();
 
-        for(int i = 0; i < species+1 && boids.get(0).size() < 500; i++)
+        for(int i = 0; i < species+3 && boids.get(0).size() < 500; i++)
             boids.get(0).add(new Food(Math.random() * getWidth(), Math.random() * getHeight()));
     }
 
