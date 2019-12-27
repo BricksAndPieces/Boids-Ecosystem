@@ -33,6 +33,7 @@ public class Environment extends JPanel {
 
     private List<QuadTree> x = new ArrayList<>();
     private boolean showQuads = false;
+    private boolean showInfo = true;
 
     public Environment(int species) {
         this.species = species;
@@ -68,6 +69,10 @@ public class Environment extends JPanel {
 
                 if(e.getKeyCode() == KeyEvent.VK_Q) {
                     showQuads ^= true;
+                }
+
+                if(e.getKeyCode() == KeyEvent.VK_I) {
+                    showInfo ^= true;
                 }
 
                 if(Boid.flockingMode) return;
@@ -109,15 +114,17 @@ public class Environment extends JPanel {
             x.forEach(z -> z.draw(g));
         }
 
-        Font font = new Font("TimesRoman", Font.BOLD, 20);
-        g.setColor(Color.white);
-        g.setFont(font);
+        if(showInfo) {
+            Font font = new Font("TimesRoman", Font.BOLD, 20);
+            g.setColor(Color.white);
+            g.setFont(font);
 
-        int height = (int) (g.getFontMetrics().getHeight() * 1.1);
-        int count = boids.stream().mapToInt(species -> species.size()).sum();
-        g.drawString("Selected: " + (spawnSize-smallestBoid+1), 10, getHeight() - height*3);
-        g.drawString("Entities: " + count, 10, getHeight() - height * 2);
-        g.drawString("Mode: " + mode, 10, getHeight() - height);
+            int height = (int) (g.getFontMetrics().getHeight() * 1.1);
+            int count = boids.stream().mapToInt(species -> species.size()).sum();
+            g.drawString("Selected: " + (spawnSize-smallestBoid+1), 10, getHeight() - height*3);
+            g.drawString("Entities: " + count, 10, getHeight() - height * 2);
+            g.drawString("Mode: " + mode, 10, getHeight() - height);
+        }
     }
 
     private void simulateBoids(Graphics2D g) {
