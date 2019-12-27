@@ -9,7 +9,7 @@ After cloning the repository and running the project, the controls are as follow
 - Q -> Displays the underlying quadtrees (which looks cool)
 - I -> Displays info about the simulations (entity count and mode)
 - Clicking -> Spawns boids
-- 1-5 -> Sets the size of the boid to be spawned during ecosystem mode
+- Number Keys -> Sets the size of the boid to be spawned during ecosystem mode
 
 ## Boids
 The Boids algorithm mimics the flocking nature of animals such as birds or fish. Entities, called boids, are used to demonstrate this. The algorithm work using three main principles.
